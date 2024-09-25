@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
-const EditCategory = () => {
+const EditProduct = () => {
     const {id} = useParams();
 
     useEffect(() => {
@@ -98,4 +98,4 @@ const EditCategory = () => {
     )
 }
 
-export default EditCategory;
+export default EditProduct;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Main.css';
-import Sidebar from '../Sidebar/Sidebar';
 import Notiflix from 'notiflix';
+import Sidebar from '../Sidebar/Sidebar';
 
 const Main = () => {
     const[product, setProduct] = useState(null);
@@ -43,8 +43,8 @@ const Main = () => {
     
 
     return (
-        <>
-            <Sidebar />            
+        <>   
+        <Sidebar/>
             <div className='mae-list'>
                 <div>
                     <h3>Lista de Produtos</h3>

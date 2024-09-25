@@ -1,6 +1,34 @@
 .sidebar{
     position: fixed;
-    border: 1px solid red;
-    width: 200px;
-    height: 800px;
+    width: 70px;
+    height: 100vh;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.c-side{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lists{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.c-icons{
+    height: 100%;
+    display: flex;
+    padding: 20px 0px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.im{
+    width: 40px;
 }

@@ -20,26 +20,6 @@ const CategoryList = () => {
         });
     }, []);
 
-    const RemoveCat = (id) => {
-        if (window.confirm('Você deseja excluir essa Categoria?')) {
-            fetch(`https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/categories/${id}`, {
-                method: "DELETE",
-                headers: {
-                    "Authorization": "Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e"
-                },
-            })
-            .then(() => {
-                Notiflix.Notify.success("Categoria excluída com sucesso!");
-                window.location.reload();
-                // setCategory(category.filter(cat => cat.id !== id));
-            })
-            .catch((error) => {
-                console.log(error);
-                Notiflix.Notify.failure("Erro ao excluir:", error.message);
-            });
-        }
-    };
-
     return (
         <>
             <Sidebar />
@@ -63,12 +43,6 @@ const CategoryList = () => {
                             </div>
                             <div>
                                 <h2 className='name-cat'>{cat.name}</h2>
-                            </div>
-                            <div>
-                                <div>
-                                    <button className="edit btn-cursor">Editar</button>
-                                    <Link onClick={() => RemoveCat(cat.id)} className="delete btn-cursor">Excluir</Link>
-                                </div>
                             </div>
                         </div>
                     ))

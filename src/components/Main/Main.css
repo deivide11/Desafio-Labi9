@@ -1,6 +1,8 @@
 .mae-list {
     max-width: 80vw;
-    height: 100vh;
+    height: 500px;
+    overflow-y: auto;
+    border: 1px solid red;
     margin-left: 320px;
     margin-right: 56px;
 }

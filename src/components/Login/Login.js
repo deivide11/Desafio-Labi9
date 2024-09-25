@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Notiflix from 'notiflix';
 import './Login.css';
 import wave from '../../assets/wave abstract.svg';
+import iconWave from '../../assets/icon-wave.png';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -111,18 +112,24 @@ const Login = () => {
             <img src={wave} className="wave-abstract" alt="Wave Abstract" />
             <main className="container-login">
                 <div className="left-login">
-                    <h2>Inovação é o nosso futuro!</h2>
+                    <h4>The wave flows   —————— </h4>
+                    <div>
+                        <h2 className='get-text'>Get <br></br>Everything <br></br> You Want</h2>
+                        <p>you pode get everthing you want if you work hard. <br></br> trust the process and stick to the plan</p>
+                    </div>
+                    
                 </div>
 
                 <form onSubmit={isLogin ? ProceedLogin : ProceedRegister} className="right-login">
                     {isLogin ? (
                         <div className='test'>
                             <div className="wave-logo">
+                                <img src={iconWave} className="icon-wave" alt="Icon Wave" />
                                 <h3>Abstract</h3>
                             </div>
 
                             <div className="card-login">
-                                <h1>Bem-vindo(a)</h1>
+                                <h1 className='welcome'>Bem-vindo(a)</h1>
                                 <div className="textfield">
                                     <label htmlFor="email">E-mail </label>
                                     <input value={username} onChange={e => UsernameUpdate(e.target.value)} type="text" name="email" placeholder="Entre com seu e-mail" />
