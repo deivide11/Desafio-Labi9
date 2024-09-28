@@ -110,3 +110,67 @@
 h2{
     font-weight: 400;
 }
+
+
+/* EDITAR */ 
+
+.m-edit {
+    width: 600px;
+}
+
+.edit-exit{
+    display: flex;
+    align-items: center;
+}
+
+.b-edit{
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #005f8f, #7d002f);
+    text-decoration: none;
+    color: white;
+    border-radius: 7px;
+    font-size: 16px;
+    margin-right: 20px;
+}
+
+.form-edit {
+    background: white;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+    box-shadow: 0px 1px 7px 1px;
+}
+
+.detail-value{
+    border: 1px solid lightgray;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: default;
+}
+
+.label-edit {
+    display: flex;
+    width: 100%;
+    margin: 10px 0px;
+    flex-direction: column;
+}
+
+.n-label{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.input-edit{
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+}
+
+.c-label{
+    width: 90%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}

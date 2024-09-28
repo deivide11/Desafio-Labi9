@@ -14,8 +14,7 @@ const Main = () => {
             headers: {'Authorization': 'Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e'}
         })
         .then((res) => res.json())
-        .then((resp) => {
-            console.log(resp.data);
+        .then((resp) => {   
             setProduct(resp.data);
         })
         .catch((error) => {
