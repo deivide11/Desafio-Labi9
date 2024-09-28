@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 1px 0px 20px;;
 }
 
 .lists{
@@ -32,4 +31,38 @@
 
 .im{
     width: 30px;
+}
+
+@media screen and (max-width:500px){
+    .sidebar{
+        width: 100%;
+        height: 70px;
+        bottom: 0;
+    }
+
+    .c-header {
+        padding: 0px 20px !important;
+    }
+
+    .miolo{
+        height: 60vh;
+    }
+
+    .c-side{
+        display: block;
+    }
+
+    .c-icons{
+        padding: 0px 20px;
+        flex-direction: row;
+    }
+
+    .lists{
+        flex-direction: row;
+    }
+
+    .c-list-prod{
+        height: 85vh;
+        padding: 0px 50px 0px 50px;
+    }
 }

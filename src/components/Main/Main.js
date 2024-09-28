@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './Main.css';
 import Notiflix from 'notiflix';
 import Sidebar from '../Sidebar/Sidebar';
+import Header from '../Header/Header';
 
 const Main = () => {
     const[product, setProduct] = useState(null);
@@ -44,8 +45,11 @@ const Main = () => {
 
     return (
         <>   
+        
         <Sidebar/>
+        <Header/>
             <div className='mae-list'>
+
                 <div className='c-list-prod'>
                     <div className='transp'>
                         <div className='h-list'>
