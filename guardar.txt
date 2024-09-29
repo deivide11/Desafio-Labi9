@@ -1,3 +1,42 @@
+Sidebar css:
+
+.sidebar{
+    position: fixed;
+    width: 50px;
+    height: 100vh;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.c-side{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lists{
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.c-icons{
+    height: 100%;
+    display: flex;
+    padding: 20px 0px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.im{
+    width: 30px;
+}
+
+Main css:
+
 .mae-list {
     max-width: 100%;
     height: 100%;
@@ -14,6 +53,14 @@
 .transp{
     display: flex;
     width: 800px;
+    overflow: auto;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.m-cat{
+    display: flex;
+    width: 600px;
     overflow: auto;
     flex-direction: column;
     white-space: nowrap;
@@ -54,11 +101,10 @@
 .miolo{
     margin: 20px 0px;
     overflow: auto;
-    height: 500px;
-
+    height: 400px;
 }
 
-.name {
+.names {
     font-size: 18px;
     position: sticky;
     top: 0;
@@ -75,6 +121,20 @@
     padding: 0px 20px;
     border-radius: 20px;
     min-width: 630px;
+    box-shadow: 0px 2px 5px 0;
+}
+
+.name-cat, .item-cat{
+    display: grid;
+    grid-template-columns:20% 80%;
+    justify-items: center;
+    height: 55px;
+    background: white;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 0px 20px;
+    border-radius: 20px;
+    min-width: 400px;
     box-shadow: 0px 2px 5px 0;
 }
 
@@ -110,9 +170,6 @@
 h2{
     font-weight: 400;
 }
-
-
-/* EDITAR */ 
 
 .m-edit {
     width: 600px;
@@ -174,3 +231,50 @@ h2{
     display: flex;
     flex-direction: column;
 }
+
+Header css:
+
+.c-header{
+    display: flex;
+    background: white;
+    padding: 0px 19px 0px 50px;
+    height: 70px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 30px;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.header{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.iconAdm{
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    object-fit: cover;
+}
+
+.text-header {
+    font-size: 24px;
+}
+
+.c-adm{
+    display: flex;
+    height: 100%;
+    gap: 10px;
+    align-items: center;
+}
+
+.img-user{
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+

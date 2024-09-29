@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
 import './Login.css';
 import wave from '../../assets/wave abstract.svg';
@@ -28,6 +28,10 @@ const Login = () => {
         PassConfirmUpdate('');
     };
 
+    useEffect(() => {
+        sessionStorage.clear()
+    }, []);
+
     const ProceedLogin = (e) => {
         e.preventDefault();
         if(validateLogin()) {
@@ -41,6 +45,7 @@ const Login = () => {
                     .then(data => {
                         if(!data.error){
                             Notiflix.Notify.success('Entrou com sucesso!');
+                            sessionStorage.setItem('username', username)
                             navigate('/main');
                         } else {
                             Notiflix.Notify.failure('Erro ao logar.');

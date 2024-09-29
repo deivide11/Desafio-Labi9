@@ -52,77 +52,68 @@ const NewProduts = () => {
     };
 
     return (
-        <div>
+        <>
             <Sidebar/>
             <Header/>
-            <div className="c-list-prod">
-                    <form onSubmit={handleSubmit} className="m-edit">
-                        <div className="h-list">
-                            <h1 className="name-list"> Novo Produto </h1>
-                            <div className="edit-exit">
-                                <button type="submit" className="b-edit"> Adicionar </button>
-                                <Link to="/main"> <img src={iconExit} className="iconExit im" alt="Exit" /> </Link>
+            <div className="c-products flex px-20 h-[90vh] items-center justify-center">
+                <form onSubmit={handleSubmit} className="m-edit w-[600px]">
+                    <div className=" flex bg-white p-4 rounded-xl items-center justify-between shadow-md">
+                        <h1 className=" font-bold text-[23px] mr-4">
+                            Novo Produto
+                        </h1>
+                        <div className="flex items-center">
+                            <button type="submit" className="py-3 px-4 bg-gradient-to-r from-[#005f8f] to-[#7d002f] text-white rounded-xl mr-4">Adicionar</button>
+                            <Link to="/main">
+                                <img src={iconExit} className=" w-[30px]" alt="Exit" />
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="bg-white overflow-y-auto rounded-xl flex justify-center items-center my-5 shadow-md">
+                        <div className="core w-[100%] p-5 flex flex-col overflow-auto">
+                            <div className="mb-4">
+                                <label className="text-[18px] font-semibold mb-2 block">
+                                    Produto
+                                </label>
+                                <input required className="w-full border border-gray-400 px-4 py-2 rounded-md" value={name} onChange={(e) => setName(e.target.value)}  placeholder="Digite o nome do produto"/>
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="text-[18px] font-semibold mb-2 block">
+                                    Descrição
+                                </label>
+                                <input required className="w-full border border-gray-400 px-4 py-2 rounded-md" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Digite a descrição"
+                                />
+                            </div>
+
+                            <div className="label-edit mb-4">
+                                <label className="n-label text-[18px] font-semibold mb-2 block">
+                                    Categoria
+                                </label>
+                                <select required className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={catId} onChange={(e) => setCatId(e.target.value)}>
+                                    <option value="">Selecione uma Categoria</option>
+                                    {categories.map((cat) => (
+                                        <option key={cat.id} value={cat.id}>
+                                            {cat.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+
+                            <div className="mb-4">
+                                <label className="text-[18px] font-semibold mb-2 block">
+                                    Preço
+                                </label>
+                                <input required type="number" className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Digite o preço"
+                                />
                             </div>
                         </div>
+                    </div>
+                </form>
+            </div>
+        </>
+    );
+};
 
-
-                        <div className="form-edit">
-                            <div className="c-label">
-                                <div className="label-edit">
-                                    <label className="n-label"> Produto </label>
-                                    <input required value={name} className="input-edit" onChange={e => setName(e.target.value)}></input>
-                                </div>
-                                    
-                                <div className="label-edit">
-                                    <label className="n-label"> Descrição </label>
-                                    <input required value={description} className="input-edit" onChange={e => setDescription(e.target.value)}></input>
-                                </div>
-
-                                <div className="label-edit">
-                                    <label className="n-label"> Categoria </label>
-                                    <select className="input-edit" required value={catId} onChange={e => setCatId(e.target.value)}>
-                                        <option value="">Selecione uma Categoria</option>
-                                        {categories.map((cat) => (
-                                            <option key={cat.id} value={cat.id}> 
-                                                {cat.name}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-
-                                <div className="label-edit">
-                                    <label className="n-label"> Preço </label>
-                                    <input required type='number' value={price} className="input-edit" onChange={e => setPrice(e.target.value)}></input>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            {/* <form onSubmit={handleSubmit}>
-                <label> Produto </label>
-                <input required value={name} onChange={e => setName(e.target.value)}></input>
-                
-                <label> Descrição </label>
-                <input required value={description} onChange={e => setDescription(e.target.value)}></input>
-
-                <label> Categoria </label>
-                <select required value={catId} onChange={e => setCatId(e.target.value)}>
-                    <option value="">Selecione uma Categoria</option>
-                    {categories.map((cat) => (
-                        <option key={cat.id} value={cat.id}> 
-                            {cat.name}
-                         </option>
-                    ))}
-                </select>
-
-                <label> Preço </label>
-                <input required type='number' value={price} onChange={e => setPrice(e.target.value)}></input>
-
-                <button type="submit"> Cadastrar</button>
-                <Link to="/main">Voltar</Link>
-            </form> */}
-        </div>
-    )
-}
 
 export default NewProduts;

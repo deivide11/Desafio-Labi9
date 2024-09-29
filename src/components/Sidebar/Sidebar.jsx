@@ -1,42 +1,57 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Sidebar.css';
-
+import React, { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Resp.css';
 import iconWave from '../../assets/icon-wave.png';
 import box from '../../assets/box.svg';
 import categoria from '../../assets/category.svg';
+import Notiflix from 'notiflix';
 import exit from '../../assets/exit.svg';
 
 const Sidebar = () => {
-  return (
-    <div className="sidebar">
-        <div className='c-side'>
-            <div className='c-icons'>
-                <div className='logo-wave'>
-                    <img src={iconWave} className="img-wave im" alt="Logo Wave Abstract" />
-                </div>
+    const navigate = useNavigate();
 
-                <div className='lists'>
-                    <div className='c-produto d-categoria'>
-                        <Link to="/main" className='list-prod'>
-                            <img src={box} className="img-box im" alt="Icon Box" />
+    useEffect(()=>{
+        let username = sessionStorage.getItem('username');
+        if(username === '' || username === null){
+            navigate('/');
+        }
+    }, []);
+
+    const handleLogout = () => {
+        sessionStorage.clear();
+        navigate('/');
+        window.location.reload();
+        Notiflix.Notify.success('Você saiu com sucesso!');
+    };
+    
+
+  return (
+    <div className="sidebar fixed w-[50px] h-full bg-white rounded-lg shadow-lg ">
+            <div className="c-side flex flex-col items-center h-full">
+                <div className="c-icons flex flex-col justify-between h-full items-center py-4">
+                    <div className="logo-wave">
+                        <img src={iconWave} className="img-wave w-8" alt="Logo Wave Abstract" />
+                    </div>
+                    <div className="lists gap-5 flex flex-col">
+                        <div>
+                            <Link to="/main" className="list-prod flex justify-center items-center">
+                                <img src={box} className="img-box w-8" alt="Icon Box" />
+                            </Link>
+                        </div>
+                        <div>
+                            <Link to="/category" className="categoria flex justify-center items-center">
+                                <img src={categoria} className="img-category w-8" alt="Icon Category" />
+                            </Link>
+                        </div>
+                    </div>
+                    <div>
+                        <Link onClick={handleLogout} className="flex justify-center items-center">
+                            <img src={exit} className="img-exit w-8" alt="Icon Exit" />
                         </Link>
                     </div>
-                    <div className='c-categoria d-categoria'>
-                        <Link to="/category" className='categoria'>
-                            <img src={categoria} className="img-category im" alt="Icon Category" />
-                        </Link>
-                    </div>
-                </div>
-                
-                <div className=''>
-                    <Link to="" className='exit'>
-                        <img src={exit} className="img-exit im" alt="Icon Exit" />
-                    </Link>
                 </div>
             </div>
         </div>
-    </div>
   );
 };
 
