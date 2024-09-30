@@ -1,9 +1,10 @@
 import Notiflix from 'notiflix';
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import iconExit from '../../assets/bx-x.svg';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
+import { IoArrowBack } from "react-icons/io5";
+import { BiSave } from "react-icons/bi";
 
 
 const EditProduct = () => {
@@ -19,9 +20,13 @@ const EditProduct = () => {
     const navigate = useNavigate();    
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         fetch(`https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/products/${id}`, {
             method: 'GET',
-            headers: {'Authorization': 'Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e'}
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         })
         .then((res) => res.json())
         .then((resp) => {
@@ -44,11 +49,13 @@ const EditProduct = () => {
 
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         fetch("https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/categories", {
             method: "GET",
             headers: {
-                "Authorization": "Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e"
-            }
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }            
         })
         .then(res => res.json())
         .then(data => {
@@ -61,11 +68,12 @@ const EditProduct = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        const token = localStorage.getItem('token');
         fetch(`https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/products/${id}`, {
             method:"PUT",
-            headers:{
-                "Content-Type": "application/json",
-                "Authorization": "Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e"
+            headers: {
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({editId, name, price, description, category_id: catId })
         }).then(res => res.json())
@@ -89,10 +97,12 @@ const EditProduct = () => {
                     <h1 className="font-bold text-[23px] mr-4">
                         Editar Produto
                     </h1>
-                    <div className="flex items-center">
-                        <button type="submit" className="b-edit py-3 px-5 bg-gradient-to-r from-[#005f8f] to-[#7d002f] text-white rounded-xl mr-4">Salvar</button>
+                    <div className="flex gap-3 items-center">
+                        <button type="submit" className="">
+                            <BiSave className='hover:text-blue-900 w-[37px] h-[37px]'/>
+                        </button>
                         <Link to="/main">
-                            <img src={iconExit} className="iconExit im" alt="Exit" />
+                            <IoArrowBack className='hover:text-blue-900 w-[35px] h-[35px]'/>
                         </Link>
                     </div>
                 </div>
@@ -125,8 +135,7 @@ const EditProduct = () => {
 
                         <div className="mb-4">
                             <label className="text-[18px] font-semibold mb-2 block">Preço</label>
-                            <input required type="number" className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Digite o preço"
-                            />
+                            <input required type="number" className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Digite o preço"/>
                         </div>
                     </div>
                 </div>

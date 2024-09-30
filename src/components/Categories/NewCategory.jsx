@@ -1,9 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import iconExit from '../../assets/bx-x.svg';
 import Notiflix from 'notiflix';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
+import { IoArrowBack } from "react-icons/io5";
+import { CgFileAdd } from "react-icons/cg";
 
 const NewCategory = () => {
 
@@ -13,11 +14,12 @@ const NewCategory = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        const token = localStorage.getItem('token');
         fetch("https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/categories", {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": "Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e"
+                "Authorization": `Bearer ${token}`
             },
             body:JSON.stringify({name})
         }).then(res => res.json())
@@ -40,10 +42,12 @@ const NewCategory = () => {
                         <h1 className="font-bold text-[23px] mr-4">
                             Cadastrar Categoria
                         </h1>
-                        <div className="flex items-center">
-                            <button type="submit" className="py-3 px-5 bg-gradient-to-r from-[#005f8f] to-[#7d002f] text-white rounded-xl mr-4">Adicionar</button>
+                        <div className="flex gap-3 items-center">
+                            <button type="submit">
+                                <CgFileAdd className="hover:text-blue-900 w-[40px] h-[40px]" />
+                            </button>
                             <Link to="/category">
-                                <img src={iconExit} alt="Exit" />
+                                <IoArrowBack className='hover:text-blue-900 w-[35px] h-[35px]'/>
                             </Link>
                         </div>
                     </div>

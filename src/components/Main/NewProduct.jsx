@@ -1,11 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import Notiflix from 'notiflix';
-import iconExit from '../../assets/bx-x.svg';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
+import { IoArrowBack } from "react-icons/io5";
+import { BiSave } from "react-icons/bi";
 
-const NewProduts = () => {
+const NewProducts = () => {
 
     const[name, setName] = useState("");
     const[price, setPrice] = useState(0);
@@ -16,11 +17,13 @@ const NewProduts = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         fetch("https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/categories", {
             method: "GET",
             headers: {
-                "Authorization": "Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e"
-            }
+                "Authorization": `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }            
         })
         .then(res => res.json())
         .then(data => {
@@ -33,11 +36,12 @@ const NewProduts = () => {
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+        const token = localStorage.getItem('token');
         fetch("https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/products", {
             method:"POST",
             headers:{
                 "Content-Type": "application/json",
-                "Authorization": "Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e"
+                "Authorization": `Bearer ${token}`
             },
             body:JSON.stringify({name, price, description, category_id: catId})
         }).then(res => res.json())
@@ -61,10 +65,12 @@ const NewProduts = () => {
                         <h1 className=" font-bold text-[23px] mr-4">
                             Novo Produto
                         </h1>
-                        <div className="flex items-center">
-                            <button type="submit" className="py-3 px-4 bg-gradient-to-r from-[#005f8f] to-[#7d002f] text-white rounded-xl mr-4">Adicionar</button>
+                        <div className="flex gap-3 items-center">
+                            <button type="submit" className="">
+                                <BiSave className='hover:text-blue-900 w-[37px] h-[37px]'/> 
+                            </button>
                             <Link to="/main">
-                                <img src={iconExit} className=" w-[30px]" alt="Exit" />
+                                <IoArrowBack className='hover:text-blue-900 w-[35px] h-[35px]'/>
                             </Link>
                         </div>
                     </div>
@@ -116,4 +122,4 @@ const NewProduts = () => {
 };
 
 
-export default NewProduts;
+export default NewProducts;

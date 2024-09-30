@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Resp.css';
+import './Responsive.css';
 import iconWave from '../../assets/icon-wave.png';
 import box from '../../assets/box.svg';
 import categoria from '../../assets/category.svg';
@@ -11,18 +11,20 @@ const Sidebar = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        let username = sessionStorage.getItem('username');
+        let username = localStorage.getItem('username');
         if(username === '' || username === null){
             navigate('/');
         }
-    }, []);
+    }, [navigate]);
 
     const handleLogout = () => {
-        sessionStorage.clear();
-        navigate('/');
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
         window.location.reload();
+        navigate('/');
         Notiflix.Notify.success('Você saiu com sucesso!');
     };
+    
     
 
   return (

@@ -29,7 +29,7 @@ const Login = () => {
     };
 
     useEffect(() => {
-        sessionStorage.clear()
+        localStorage.clear()
     }, []);
 
     const ProceedLogin = (e) => {
@@ -45,10 +45,24 @@ const Login = () => {
                     .then(data => {
                         if(!data.error){
                             Notiflix.Notify.success('Entrou com sucesso!');
-                            sessionStorage.setItem('username', username)
-                            navigate('/main');
+                            localStorage.setItem('token', data.data.token);
+                            return fetch('https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/auth/me', {
+                                method: 'GET',
+                                headers: {
+                                    'Authorization': `Bearer ${data.data.token}`,
+                                },
+                            });
                         } else {
                             Notiflix.Notify.failure('Erro ao logar.');
+                        }
+                    })
+                    .then((res) => res.json())
+                    .then(userData => {
+                        if (userData.data && userData.data.name) {
+                            localStorage.setItem('username', userData.data.name);
+                            navigate('/main');
+                        } else {
+                            Notiflix.Notify.failure('Erro ao obter dados do usuário.');
                         }
                     })
                     .catch(error => console.error('Erro ao logar:', error));

@@ -1,11 +1,11 @@
 import iconAdm from '../../assets/fundo2.png';
 
 const Header = () => {
-    const name = sessionStorage.getItem('username') || 'Usuário';
+    const name = localStorage.getItem('username') || '';
 
     return (
         <div>
-            <div className="c-header flex bg-white p-4 px-[50px] rounded-lg shadow-md">
+            <div className="c-header flex bg-white p-4 ml-[4%] w-[96vw] rounded-lg shadow-md">
                 <div className="flex justify-around items-center w-full">
                     <h1 className="text-header text-xl font-bold">Admin Painel</h1>
                     <div className="flex items-center gap-2">

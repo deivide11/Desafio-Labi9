@@ -3,15 +3,20 @@ import React, { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
+import { IoArrowBack } from "react-icons/io5";
 
 const CategoryDetail = () => {
     const {id} = useParams();
     const [item, setItem] = useState(null);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         fetch(`https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/products/${id}`, {
             method: 'GET',
-            headers: {'Authorization': 'Bearer 463|nJ4GDW189oFGZl3V3zeRFiTiY27GRND8eC8jJieW736cad7e'}
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
         })
         .then((res) => res.json())
         .then((resp) => {
@@ -26,18 +31,18 @@ const CategoryDetail = () => {
         <div>
             <Sidebar />
             <Header />
-            <div className="c-products flex px-20 h-[90vh] items-center justify-center">
+            <div className="c-products flex pl-20 pr-10 h-[90vh] items-center justify-center">
                 <div className='w-[600px]'>
                     <div className='flex bg-white p-4 rounded-xl overflow-auto items-center justify-between'>
-                        <h1 className='name-list font-bold text-[23px] mr-4'>Detalhes do Produto</h1>
+                        <h1 className='name-list font-bold text-[23px] mr-4'>Detalhes</h1>
                         <div>
-                            <Link to={"/main"} className='py-3 px-5 bg-gradient-to-r from-[#005f8f] to-[#7d002f] text-white rounded-xl mr-4'>
-                                Voltar
+                            <Link to={"/main"}>
+                                <IoArrowBack className='hover:text-blue-900 w-[35px] h-[35px]'/>
                             </Link>
                         </div>
                     </div>
                     <div className="bg-white rounded-xl flex justify-center items-center my-5 shadow-md">
-                        <div className="core w-[100%] p-5 flex flex-col cursor-default overflow-auto">
+                        <div className="core w-[100%] p-5 flex flex-col justify-start cursor-default overflow-auto">
                             {item && (
                                 <div>
                                     <div className="mb-4">
@@ -50,7 +55,7 @@ const CategoryDetail = () => {
                                     </div>
                                     <div className="mb-4">
                                         <h3 className='n-label text-[18px] font-semibold mb-2 block'>Descrição</h3>
-                                        <div className="w-full border border-gray-400 bg-gray-200 px-4 py-2 rounded-md">{item.description}</div>
+                                        <div className="w-full border border-gray-400 bg-gray-200 px-4 py-2 overflow-auto h-[55px] rounded-md">{item.description}</div>
                                     </div>
                                     <div className="mb-4">
                                         <h3 className='n-label text-[18px] font-semibold mb-2 block'>Categoria</h3>
