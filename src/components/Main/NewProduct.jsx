@@ -35,6 +35,7 @@ const NewProducts = () => {
     }, []);
 
     const handleSubmit=(e)=>{
+        // e.repeventDefault faz não resetar
         e.preventDefault();
         const token = localStorage.getItem('token');
         fetch("https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/products", {
@@ -43,6 +44,7 @@ const NewProducts = () => {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
+            // Produtos enviados
             body:JSON.stringify({name, price, description, category_id: catId})
         }).then(res => res.json())
         .then(() => {

@@ -8,8 +8,10 @@ import { BiSave } from "react-icons/bi";
 
 
 const EditProduct = () => {
+    // Pegando o ID do produto
     const {id} = useParams();
 
+    // Armazenando os dados do produto
     const[editId, setEditId] = useState("");
     const[name, setName] = useState("");
     const[price, setPrice] = useState(0);
@@ -30,6 +32,7 @@ const EditProduct = () => {
         })
         .then((res) => res.json())
         .then((resp) => {
+            // Verificando se os dados foram retornados
             if (resp && resp.data) {
                 setEditId(resp.data.id);
                 setName(resp.data.name);
@@ -47,7 +50,7 @@ const EditProduct = () => {
     }, [id, navigate]);
 
 
-
+    // useFect buscando as categorias disponíveis
     useEffect(() => {
         const token = localStorage.getItem('token');
         fetch("https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/categories", {

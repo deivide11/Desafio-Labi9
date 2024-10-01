@@ -9,7 +9,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 
@@ -23,6 +23,13 @@ body {
     animation: App-logo-spin infinite 20s linear;
   }
 }
+
+.left-login{
+  border: 10px solid white;
+  border-start-start-radius: 20px;
+  border-end-start-radius: 20px;
+}
+
 
 .App-header {
   background-color: #282c34;

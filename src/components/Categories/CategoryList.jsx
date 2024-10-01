@@ -6,8 +6,10 @@ import Header from '../Header/Header';
 import { CgFileAdd } from "react-icons/cg";
 
 const CategoryList = () => {
+    // Armazenando a lista da categoria
     const [category, setCategory] = useState(null);
 
+    // Parte da Lista de categorias
     useEffect(() => {
         const token = localStorage.getItem('token');
         fetch('https://challenge-labi9-4b4c472d5c07.herokuapp.com/api/categories', {
@@ -41,9 +43,9 @@ const CategoryList = () => {
                     </Link>
                 </div>
                 <div className="core my-5 overflow-auto h-[400px]">
-                    <div className="sticky top-0 names grid justify-items-center grid-center grid-cols-[20%,80%] justify-center h-[55px] bg-white items-center my-4 p-4 rounded-xl shadow-md">
+                    <div className="sticky top-0 font-semibold text-[18px] grid justify-items-center grid-center grid-cols-[20%,80%] justify-center h-[55px] bg-white items-center my-4 p-4 rounded-xl shadow-md">
                         <h3>ID</h3>
-                        <h3>Categoria</h3>
+                        <h3>Categorias</h3>
                     </div>
                     {category && category.map(cat => (
                         <div className="grid justify-items-center grid-cols-[20%,80%] justify-center h-[55px] bg-white items-center my-4 p-4 rounded-xl shadow-md" key={cat.id}>

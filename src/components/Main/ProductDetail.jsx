@@ -6,7 +6,10 @@ import Header from '../Header/Header';
 import { IoArrowBack } from "react-icons/io5";
 
 const CategoryDetail = () => {
+    // Pegando o ID da URL
     const {id} = useParams();
+
+    // Armazenando os detalhes da categoria
     const [item, setItem] = useState(null);
 
     useEffect(() => {
@@ -18,6 +21,7 @@ const CategoryDetail = () => {
                 'Content-Type': 'application/json'
             }
         })
+        // Convertendo para JSON
         .then((res) => res.json())
         .then((resp) => {
             setItem(resp.data);

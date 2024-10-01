@@ -4,14 +4,15 @@ import Notiflix from 'notiflix';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 import { IoArrowBack } from "react-icons/io5";
-import { CgFileAdd } from "react-icons/cg";
+import { BiSave } from "react-icons/bi";
 
 const NewCategory = () => {
-
+    // Armazenando o nome da categoria
     const[name, setName] = useState("");
-    
+
     const navigate = useNavigate();
 
+    // Parte da nova categoria
     const handleSubmit=(e)=>{
         e.preventDefault();
         const token = localStorage.getItem('token');
@@ -44,7 +45,7 @@ const NewCategory = () => {
                         </h1>
                         <div className="flex gap-3 items-center">
                             <button type="submit">
-                                <CgFileAdd className="hover:text-blue-900 w-[40px] h-[40px]" />
+                                <BiSave className='hover:text-blue-900 w-[37px] h-[37px]'/>
                             </button>
                             <Link to="/category">
                                 <IoArrowBack className='hover:text-blue-900 w-[35px] h-[35px]'/>

@@ -1,13 +1,14 @@
-import iconAdm from '../../assets/fundo2.png';
+import iconAdm from '../../assets/adm.png';
 
 const Header = () => {
+    // Pega o nome do usuário do localStorage
     const name = localStorage.getItem('username') || '';
 
     return (
         <div>
-            <div className="c-header flex bg-white p-4 ml-[4%] w-[96vw] rounded-lg shadow-md">
+            <div className="c-header flex bg-white p-4 ml-[51px] max-w-[100%] rounded-lg shadow-md">
                 <div className="flex justify-around items-center w-full">
-                    <h1 className="text-header text-xl font-bold">Admin Painel</h1>
+                    <h1 className="text-header text-xl font-bold"> Abstract</h1>
                     <div className="flex items-center gap-2">
                         <p className="font-semibold">{name}</p>
                         <div>
