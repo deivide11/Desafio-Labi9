@@ -61,7 +61,7 @@ const NewProducts = () => {
         <>
             <Sidebar/>
             <Header/>
-            <div className="c-products flex px-20 h-[90vh] items-center justify-center">
+            <div className="c-products flex pl-20 pr-8 h-[90vh] items-center justify-center">
                 <form onSubmit={handleSubmit} className="m-edit w-[600px]">
                     <div className=" flex bg-white p-4 rounded-xl items-center justify-between shadow-md">
                         <h1 className=" font-bold text-[23px] mr-4">
@@ -90,15 +90,14 @@ const NewProducts = () => {
                                 <label className="text-[18px] font-semibold mb-2 block">
                                     Descrição
                                 </label>
-                                <input required className="w-full border border-gray-400 px-4 py-2 rounded-md" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Digite a descrição"
-                                />
+                                <input required className="w-full border border-gray-400 px-4 py-2 rounded-md" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Digite a descrição"/>
                             </div>
 
                             <div className="label-edit mb-4">
-                                <label className="n-label text-[18px] font-semibold mb-2 block">
+                                <label className="text-[18px] font-semibold mb-2 block">
                                     Categoria
                                 </label>
-                                <select required className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={catId} onChange={(e) => setCatId(e.target.value)}>
+                                <select required className="w-full border border-gray-400 px-4 py-2 rounded-md" value={catId} onChange={(e) => setCatId(e.target.value)}>
                                     <option value="">Selecione uma Categoria</option>
                                     {categories.map((cat) => (
                                         <option key={cat.id} value={cat.id}>
@@ -112,8 +111,7 @@ const NewProducts = () => {
                                 <label className="text-[18px] font-semibold mb-2 block">
                                     Preço
                                 </label>
-                                <input required type="number" className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Digite o preço"
-                                />
+                                <input required type="number" className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" value={price} onChange={(e) => setPrice(e.target.value)} placeholder="Digite o preço"/>
                             </div>
                         </div>
                     </div>

@@ -32,7 +32,7 @@ const CategoryList = () => {
         <>
             <Sidebar />
             <Header/>
-            <div className="c-products flex px-20 h-[90vh] items-center justify-center">
+            <div className="c-products flex pl-20 pr-8 h-[90vh] items-center justify-center">
             <div className="w-[600px]">
                 <div className="flex bg-white p-4 rounded-xl overflow-auto items-center justify-between shadow-md">
                     <h1 className="font-bold text-[23px] mr-4">

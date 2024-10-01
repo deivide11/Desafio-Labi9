@@ -37,7 +37,7 @@ const NewCategory = () => {
         <div>
             <Sidebar/>
             <Header/>
-            <div className="c-products flex px-20 h-[90vh] items-center justify-center">
+            <div className="c-products flex pl-20 pr-8 h-[90vh] items-center justify-center">
                 <form onSubmit={handleSubmit} className="w-[600px]">
                     <div className="flex bg-white p-4 rounded-xl overflow-auto items-center justify-between shadow-md">
                         <h1 className="font-bold text-[23px] mr-4">
@@ -59,8 +59,7 @@ const NewCategory = () => {
                                 <label className="text-[18px] font-semibold mb-2 block">
                                     Nova Categoria
                                 </label>
-                                <input required value={name} className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" onChange={(e) => setName(e.target.value)} placeholder="Digite o nome da categoria"
-                                />
+                                <input required value={name} className="input-edit w-full border border-gray-400 px-4 py-2 rounded-md" onChange={(e) => setName(e.target.value)} placeholder="Digite o nome da categoria"/>
                             </div>
                         </div>
                     </div>
